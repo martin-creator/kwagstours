@@ -5,40 +5,15 @@ if($_POST["submit"]) {
     $subject="New Booking From Website";
     $sender=$_POST["sender"];
     $senderEmail=$_POST["senderEmail"];
-    $message=$_POST["message"];
+    $people=$_POST["people"];
+    $phone=$_POST["phone"];
+    $date=$_POST["date"];
 
-    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+    $mailBody="Name: $sender\nEmail: $senderEmail\nPhone: $phone\n Depature date: $date\nNumber of travellers: $people\n\n$message";
 
     mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
 
     $thankYou="<p>Thank you! Your booking has been successfully made.</p>";
 }
 
-?><!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Contact form to email</title>
-</head>
-
-<body>
-
-    <?=$thankYou ?>
-
-    <form method="post" action="contact.php">
-        <label>Name:</label>
-        <input name="sender">
-
-        <label>Email address:</label>
-        <input name="senderEmail">
-
-        <label>Message:</label>
-        <textarea rows="5" cols="20" name="message"></textarea>
-
-        <input type="submit" name="submit">
-    </form>
-
-</body>
-
-</html>
+?>
